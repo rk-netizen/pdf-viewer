@@ -1,0 +1,37 @@
+body,
+.app-container {
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.main-title {
+    font-size: 2.5em;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+/* media queries to make application responsive mobile and tablet friendly */
+@media (max-width: 900px) {
+    .app-container {
+        padding: 1em;
+    }
+    .main-title {
+        font-size: 2em;
+    }
+}
+
+@media (max-width: 600px) {
+    .app-container {
+        padding: 0.5em;
+    }
+    .main-title {
+        font-size: 1.2em;
+    }
+}
