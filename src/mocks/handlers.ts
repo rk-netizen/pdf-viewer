@@ -9,3 +9,7 @@ export const handlers: HttpHandler[] = [
         });
     }),
 ];
+
+// handler for POST async request : '/api/sign-pdf'
+// reads the uploaded PDF file and returns it as a response (stimulated signed pdf file)
+// returns headers which is our signed pdf file

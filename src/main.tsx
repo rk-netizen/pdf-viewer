@@ -4,6 +4,7 @@ import { StrictMode } from "react";
 import App from "./App";
 import "./index.css";
 
+// initiate MSW when in development mode
 if (import.meta.env.MODE === "development") {
     worker.start();
 }
