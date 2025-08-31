@@ -1,5 +1,4 @@
 import { useState } from "react";
-import "./PdfViewer.css";
 
 // useState hooks for managing Pdf state
 // initial state would be null
@@ -71,23 +70,32 @@ const PdfViewer = () => {
     // If a signed PDF is available, shows its preview and a download link.
     // Displays error messages if any.
     return (
-        <div className="pdf-viewer-container">
-            <input
-                type="file"
-                accept="application/pdf"
-                onChange={handleFileChange}
-                className="pdf-upload-input"
-                aria-label="PDF file"
-            />
+        <div className="w-full max-w-lg mx-auto flex flex-col items-center bg-white p-6 rounded-xl shadow-md">
+            <div className="w-full mb-4 flex flex-col items-start">
+                <label
+                    htmlFor="pdf-upload"
+                    className="block mb-2 text-base font-medium text-gray-700"
+                >
+                    Upload PDF file
+                </label>
+                <input
+                    id="pdf-upload"
+                    type="file"
+                    accept="application/pdf"
+                    onChange={handleFileChange}
+                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 text-base bg-gray-50 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-indigo-100 file:text-indigo-700 hover:file:bg-indigo-200"
+                    aria-label="PDF file"
+                />
+            </div>
             {pdfUrl && !signedPdfUrl && (
                 <>
                     <iframe
                         src={pdfUrl}
                         title="PDF Preview"
-                        className="pdf-preview"
+                        className="w-full min-h-[250px] sm:min-h-[400px] border rounded-lg mb-4"
                     />
                     <button
-                        className="pdf-sign-btn"
+                        className="w-full py-2 px-4 bg-indigo-600 text-white font-semibold rounded-lg shadow hover:bg-indigo-700 transition disabled:bg-indigo-300 disabled:cursor-not-allowed"
                         onClick={handleSignPdf}
                         disabled={loading}
                     >
@@ -100,18 +108,22 @@ const PdfViewer = () => {
                     <iframe
                         src={signedPdfUrl}
                         title="Signed PDF Preview"
-                        className="pdf-preview"
+                        className="w-full min-h-[250px] sm:min-h-[400px] border rounded-lg mb-4"
                     />
                     <a
                         href={signedPdfUrl}
                         download="signed.pdf"
-                        className="pdf-download-link"
+                        className="w-full py-2 px-4 bg-green-500 text-white font-semibold rounded-lg shadow hover:bg-green-600 transition text-center"
                     >
                         Download Signed PDF
                     </a>
                 </>
             )}
-            {error && <div className="pdf-error">{error}</div>}
+            {error && (
+                <div className="w-full text-red-500 font-bold mt-4 text-center">
+                    {error}
+                </div>
+            )}
         </div>
     );
 };
