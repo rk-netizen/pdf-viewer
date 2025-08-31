@@ -1,69 +1,76 @@
-# React + TypeScript + Vite
+# PDF Viewer (React + TypeScript + Vite)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A mobile and tablet friendly app where a user uploads a PDF, sends it to a mock server for signing, and then views the signed PDF on their device. This app is fully mobile-responsive and provides a smooth experience on both phones and tablets. This app is built with React, TypeScript, and Vite.
 
-Currently, two official plugins are available:
+## What’s Inside?
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+-   **React** for UI
+-   **TypeScript** for type safety
+-   **Vite** for fast development and builds
+-   **Tailwind CSS** for styling and responsiveness
+-   **MSW (Mock Service Worker)** to simulate backend API for PDF signing
+-   **Vitest** (and Jest support) for testing
 
-## Expanding the ESLint configuration
+## How to Get Started
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+Clone the repo and install dependencies:
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```sh
+git clone <your-repo-url>
+cd pdf-viewer
+npm install
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### Running the App
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+Start the development server:
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```sh
+npm run dev
 ```
+
+Open [http://localhost:5173](http://localhost:5173) in your browser.
+
+### Running Tests
+
+To run all tests (using Vitest):
+
+```sh
+npx vitest
+```
+
+Or to run a specific test file:
+
+```sh
+npx vitest run src/components/PdfViewer.test.tsx
+```
+
+If you prefer Jest:
+
+```sh
+npx jest run src/mocks/handlers.test.ts
+```
+
+### Linting
+
+Check code quality with ESLint:
+
+```sh
+npm run lint
+```
+
+## Configuration & Tools
+
+-   **TypeScript:** See `tsconfig.json` and related files for strict type settings.
+-   **Tailwind CSS:** Configured in `tailwind.config.cjs` and used throughout components for utility-first styling.
+-   **MSW:** Mock API handlers are in `src/mocks/handlers.ts`.
+-   **Testing:** Tests are in `src/components/*.test.tsx` and `src/mocks/handlers.test.ts`.
+-   **Vite:** Main config in `vite.config.ts`.
+
+## Features
+
+-   Upload and preview PDF files instantly
+-   Mobile and tablet responsive design
+-   Sign PDF via mock backend (no real server needed)
+-   Download signed PDF
+-   Fully tested with Vitest/Jest
