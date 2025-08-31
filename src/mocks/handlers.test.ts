@@ -1,8 +1,6 @@
 import { describe, it, expect, beforeAll, afterAll, afterEach } from "vitest";
 import { setupServer } from "msw/node";
 import { handlers } from "./handlers";
-// import fetch from 'node-fetch';
-// (global as any).fetch = fetch;
 
 describe("MSW handlers", () => {
     // this is to setup a mock server to listen

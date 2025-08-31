@@ -33,22 +33,16 @@ Open [http://localhost:5173](http://localhost:5173) in your browser.
 
 ### Running Tests
 
-To run all tests (using Vitest):
+To run tests (using Vitest):
 
 ```sh
-npx vitest
-```
-
-Or to run a specific test file:
-
-```sh
-npx vitest run src/components/PdfViewer.test.tsx
+npx vitest run src/mocks/handlers.test.ts
 ```
 
 If you prefer Jest:
 
 ```sh
-npx jest run src/mocks/handlers.test.ts
+npx jest run src/components/PdfViewer.test.tsx
 ```
 
 ### Linting
